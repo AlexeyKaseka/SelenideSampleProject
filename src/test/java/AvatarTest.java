@@ -1,3 +1,4 @@
+import com.codeborne.selenide.ElementsCollection;
 import org.junit.Test;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -51,8 +52,18 @@ public class AvatarTest {
         $x("//form[@name='edit']//button[text()='Сохранить']").click();
     }
 
+    @Test
+    public void markAllCardTest() {
+
+        open("https://qa-mesto.praktikum-services.ru/");
+        $(byId("email")).setValue("kaseka_2999@gmail.com");
+        $(byId("password")).setValue("Qwerty123");
+        $(byClassName("auth-form__button")).click();
+        ElementsCollection allCards = $$(byClassName("card"));
+        var secondCard = allCards.get(1);
+        String cardText = secondCard.find(byClassName("card__title")).getText();
 
 
-
+    }
 
 }
