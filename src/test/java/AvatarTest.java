@@ -1,4 +1,5 @@
 import org.junit.Test;
+
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -21,6 +22,7 @@ public class AvatarTest {
         $(byXpath(".//form[@name='edit-avatar']/button[text()='Сохранить']")).click();
 
     }
+
     @Test
     public void addNewCardTest() {
         open("https://qa-mesto.praktikum-services.ru/");
@@ -34,15 +36,20 @@ public class AvatarTest {
         $x(".//button[contains(@class, 'card__delete-button') and contains(@class, 'card__delete-button_visible')]").click();
 
 
-
-
-
-
     }
 
 
-
-
+    @Test
+    public void changeProfileDateTest() {
+        open("https://qa-mesto.praktikum-services.ru/");
+        $(byId("email")).setValue("kaseka_2999@gmail.com");
+        $(byId("password")).setValue("Qwerty123");
+        $(byClassName("auth-form__button")).click();
+        $(byClassName("profile__edit-button")).click();
+        $(byId("owner-name")).setValue("Аристарх Сократович");
+        $(byId("owner-description")).setValue("Автор автотестов");
+        $x("//form[@name='edit']//button[text()='Сохранить']").click();
+    }
 
 
 
