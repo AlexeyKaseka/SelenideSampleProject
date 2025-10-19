@@ -21,5 +21,31 @@ public class AvatarTest {
         $(byXpath(".//form[@name='edit-avatar']/button[text()='Сохранить']")).click();
 
     }
-    // закрой браузер
+    @Test
+    public void addNewCardTest() {
+        open("https://qa-mesto.praktikum-services.ru/");
+        $(byId("email")).setValue("kaseka_2999@gmail.com");
+        $(byId("password")).setValue("Qwerty123");
+        $(byClassName("auth-form__button")).click();
+        $(byClassName("profile__add-button")).click();
+        $(byName("name")).setValue("Москва");
+        $(byName("link")).setValue("https://code.s3.yandex.net/qa-automation-engineer/java/files/paid-track/sprint1/photoSelenide.jpg");
+        $x("//form[@name='new-card']//button[text()='Сохранить']").click();
+        $x(".//button[contains(@class, 'card__delete-button') and contains(@class, 'card__delete-button_visible')]").click();
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 }
